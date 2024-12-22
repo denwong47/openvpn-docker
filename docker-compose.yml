@@ -1,0 +1,15 @@
+version: "3"
+services:
+  openvpn:
+    image: openvpn/openvpn-as
+    privileged: true
+    restart: unless-stopped
+    cap_add:
+     - NET_ADMIN
+    ports:
+     - "1194:1194/udp"
+     - "443:443"
+     - "943:943"
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - ./volume:/openvpn
